@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Pamela Adani — Virtual Assistant</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<meta name="color-scheme" content="dark">
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap');
+
+			:root{
+				--bg: #ffffff;
+				--text: #111827;
+				--muted: #6b7280;
+				--accent: #c92b2b; /* red accent */
+				--accent-light: #ff6b6b;
+				--border: #e6e6e6;
+				--card-bg: #fbfbfc;
+			}
+
+			* { box-sizing: border-box; margin: 0; padding: 0; }
+			html,body { height: 100%; }
+
+			body {
+				font-family: 'Georgia', 'Times New Roman', serif;
+				background: var(--bg);
+				min-height: 100vh;
+				color: var(--text);
+				padding: 0;
+				overflow-x: hidden;
+			}
+
+			.hero { 
+				position: relative;
+				padding: 64px 32px 48px;
+				max-width: 780px;
+				margin: 0 auto;
+			}
+
+			.gold-rule { width: 48px; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); margin-bottom: 20px; }
+
+			.name-block { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 6vw, 3.4rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.5px; color: var(--text); margin-bottom: 8px; }
+			.name-accent { color: var(--accent); }
+
+			.title-badge { display:inline-block; font-family: 'Crimson Pro', serif; font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 28px; padding: 6px 14px; border: 1px solid var(--border); border-radius: 2px; }
+
+			.hook-text { font-family: 'Playfair Display', serif; font-size: clamp(1.05rem, 2.5vw, 1.25rem); font-weight: 400; font-style: italic; line-height: 1.7; color: #374151; max-width: 640px; margin-bottom: 36px; border-left: 3px solid var(--accent); padding-left: 20px; }
+
+			.stats-row { display:flex; gap:32px; flex-wrap:wrap; margin-bottom:48px; }
+			.stat-item { text-align:left; }
+			.stat-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; }
+			.stat-label { font-family: 'Crimson Pro', serif; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top:4px; }
+
+			.divider { border: none; border-top: 1px solid var(--border); max-width: 780px; margin: 0 auto 40px; }
+
+			.section { max-width: 780px; margin: 0 auto; padding: 0 32px 48px; }
+			.section-label { font-family: 'Crimson Pro', serif; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+
+			.about-block { background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; padding: 28px; position: relative; }
+			.about-text { font-family: 'Crimson Pro', serif; font-size: 1.05rem; line-height: 1.85; color: #374151; white-space: pre-line; }
+
+			.copy-btn { position: absolute; top: 14px; right: 14px; background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: 'Crimson Pro', serif; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; }
+			.copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+			.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+			.service-card { background: #ffffff; border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; transition: border-color 0.2s ease; box-shadow: 0 1px 2px rgba(16,24,40,0.03); }
+			.service-card:hover { border-color: rgba(0,0,0,0.06); }
+			.service-icon { font-size: 1.4rem; margin-bottom: 10px; }
+			.service-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+			.service-desc { font-family: 'Crimson Pro', serif; font-size: 0.92rem; line-height: 1.65; color: #475569; }
+
+			.skills-wrap { display:flex; flex-wrap:wrap; gap:10px; }
+			.skill-pill { font-family: 'Crimson Pro', serif; font-size: 0.8rem; letter-spacing: 0.5px; color: #7f1d1d; border: 1px solid var(--border); padding: 5px 14px; border-radius: 2px; background: rgba(201,43,43,0.06); }
+
+			.cta-block { background: linear-gradient(135deg, rgba(201,43,43,0.07), rgba(201,43,43,0.03)); border: 1px solid var(--border); border-radius: 4px; padding: 32px 28px; text-align: center; }
+			.cta-headline { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+			.cta-sub { font-family: 'Crimson Pro', serif; font-size: 0.95rem; color: #475569; line-height: 1.7; }
+			.cta-gold { color: var(--accent); font-weight: 600; }
+
+			@media (max-width:420px){ .hero{padding:32px 18px} .name-block{font-size:2rem} }
+		</style>
+	</head>
+	<body>
+		<main>
+			<div class="hero">
+				<div class="gold-rule"></div>
+				<h1 class="name-block">Pamela<br><span class="name-accent">Adani</span></h1>
+				<div class="title-badge">Virtual Assistant · Admin Operations · Social Media Management</div>
+				<p class="hook-text">"Results-focused Virtual Assistant with 2 years of hands-on administrative experience, proven track record in managing complex government correspondence, securing overdue payments through strategic communication, and streamlining office workflows."</p>
+
+				<div class="stats-row">
+					<div class="stat-item">
+						<div class="stat-number">2+</div>
+						<div class="stat-label">Years Admin Experience</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-number">100%</div>
+						<div class="stat-label">Correspondence Accuracy</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-number">2yr+</div>
+						<div class="stat-label">Social Media Management</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-number">∞</div>
+						<div class="stat-label">Deadlines Met</div>
+					</div>
+				</div>
+			</div>
+
+			<hr class="divider">
+
+			<section class="section">
+				<div class="section-label">About</div>
+				<div class="about-block">
+					<button id="copyBtn" class="copy-btn">Copy</button>
+					<p id="aboutText" class="about-text"></p>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="section-label">What I Support</div>
+				<div class="services-grid">
+					<article class="service-card">
+						<div class="service-icon">📅</div>
+						<div class="service-title">Calendar & Inbox Management</div>
+						<div class="service-desc">Zero-chaos scheduling and correspondence handling so executives stay focused on what matters.</div>
+					</article>
+
+					<article class="service-card">
+						<div class="service-icon">⚙️</div>
+						<div class="service-title">Workflow & Admin Coordination</div>
+						<div class="service-desc">Streamlined office systems, task tracking, and process documentation that eliminate bottlenecks.</div>
+					</article>
+
+					<article class="service-card">
+						<div class="service-icon">📱</div>
+						<div class="service-title">Social Media Content Creation</div>
+						<div class="service-desc">Structured, on-brand content with consistent visual identity — planned, created, and scheduled.</div>
+					</article>
+
+					<article class="service-card">
+						<div class="service-icon">🎯</div>
+						<div class="service-title">Brand Consistency</div>
+						<div class="service-desc">A unified voice and look across platforms, backed by frontend design knowledge and user-first thinking.</div>
+					</article>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="section-label">Skills & Tools</div>
+				<div class="skills-wrap">
+					<span class="skill-pill">Calendar & Inbox Management</span>
+					<span class="skill-pill">Executive Scheduling</span>
+					<span class="skill-pill">Workflow Coordination</span>
+					<span class="skill-pill">Government Correspondence</span>
+					<span class="skill-pill">Social Media Content</span>
+					<span class="skill-pill">Brand Consistency</span>
+					<span class="skill-pill">Content Scheduling</span>
+					<span class="skill-pill">Frontend Development</span>
+					<span class="skill-pill">Digital Tools & Design</span>
+					<span class="skill-pill">Administrative Operations</span>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="cta-block">
+					<div class="cta-headline">Ready to Stay Clear, Consistent & In Control?</div>
+					<p class="cta-sub">Let's connect. Whether you need an executive right hand or a consistent content presence,<br><span class="cta-gold">I help you show up organized, online, and ahead.</span></p>
+				</div>
+			</section>
+		</main>
+
+		<script>
+			const aboutText = `Results-focused Virtual Assistant with 2 years of hands-on administrative experience, proven track record in managing complex government correspondence, securing overdue payments through strategic communication, and streamlining office workflows. Plus 1 year of social media management.
+
+Skilled in executive scheduling, workflow organization, and structured, visually consistent content creation. Frontend development training adds a strong grasp of digital tools, layout, and user-focused design.
+
+What I support:
+• Calendar and inbox management
+• Workflow organization and admin coordination
+• Social media content creation and scheduling
+• Brand consistency and structured content
+
+I help you stay clear, consistent, and in control, in your operations and your online presence.`;
+
+			// Populate about text
+			document.getElementById('aboutText').textContent = aboutText;
+
+			const copyBtn = document.getElementById('copyBtn');
+			copyBtn.addEventListener('click', async () => {
+				try {
+					await navigator.clipboard.writeText(aboutText);
+					const original = copyBtn.textContent;
+					copyBtn.textContent = 'Copied ✓';
+					setTimeout(() => { copyBtn.textContent = original; }, 2000);
+				} catch (err) {
+					console.error('Clipboard write failed', err);
+				}
+			});
+		</script>
+	</body>
+</html>
+
+
